@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="bootstrap.min.css">
+        <script src="bootstrap.min.js"></script>
+        <script src="jquery.min.js"></script>
+        <style>
+        </style>
+        <script>
+            $(document).ready(function(){
+                    $('#content').load('fetch.php')
+                   $("button").on("click",function(){
+                    $.ajax({
+                        url:"insert.php",
+                        type:"POST",
+                        data:{message:$("#msg").val()},
+                        success:function(response){
+                        },
+                        error:function(status){
+                            alert("Unable To Send")
+                        }
+                    });
+                    $("#msg").val(" ")
+                });
+            });
+function loadlink(){
+    $('#content').load('fetch.php')
+}
+
+loadlink(); 
+setInterval(function(){
+    loadlink() 
+}, 100);
+
+        </script>
+    </head>
+    <body>
+        <a href="settings.php?name=logout" accesskey="l">logout</a>
+        <div style="max-height: 350px;overflow-x: auto;" id="content">
+            
+        </div>
+        <div>
+            <textarea style="width: 100%" id="msg"></textarea>
+            <button>Send</button>
+        </div>
+    </body>
+</html>
+<!--
+u114823770
+-->
